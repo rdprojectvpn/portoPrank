@@ -1,0 +1,127 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Portofolio Saya</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }.container {
+  text-align: center;
+}
+
+.spinner {
+  width: 80px;
+  height: 80px;
+  border: 8px solid #1e293b;
+  border-top: 8px solid #38bdf8;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.progress {
+  width: 300px;
+  height: 10px;
+  background: #1e293b;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px auto;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #38bdf8, #22c55e);
+  transition: width 0.3s;
+}
+
+.text {
+  font-size: 18px;
+  margin-top: 10px;
+  opacity: 0.8;
+}
+
+.small {
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #38bdf8;
+  color: black;
+  cursor: pointer;
+  display: none;
+}
+
+  </style>
+</head>
+<body><div class="container">
+  <h1>🚧 Sedang Membuat Portofolio...</h1>
+  <div class="spinner"></div>  <div class="progress">
+    <div class="progress-bar" id="bar"></div>
+  </div>  <div class="text" id="status">Menginisialisasi proyek...</div>
+  <div class="small">Harap tunggu ya... (ini serius 🤭)</div><button onclick="resetPrank()">Coba Lagi</button>
+
+</div><script>
+  let progress = 0;
+  const bar = document.getElementById('bar');
+  const status = document.getElementById('status');
+  const btn = document.querySelector('button');
+
+  const messages = [
+    "Menginisialisasi proyek...",
+    "Menghubungkan ke server NASA...",
+    "Mengambil inspirasi dari Google...",
+    "Mengoptimasi AI...",
+    "Menambahkan fitur rahasia...",
+    "Menghapus bug (katanya)...",
+    "Mengcompile harapan...",
+    "Hampir selesai...",
+    "99%... tunggu bentar lagi..."
+  ];
+
+  function fakeLoading() {
+    let interval = setInterval(() => {
+      progress += Math.random() * 5;
+
+      if (progress >= 99) {
+        progress = 99;
+        bar.style.width = progress + '%';
+        status.innerText = "Sedikit lagi... sabar ya 😏";
+      } else {
+        bar.style.width = progress + '%';
+        status.innerText = messages[Math.floor(Math.random() * messages.length)];
+      }
+    }, 800);
+
+    // prank: tidak pernah selesai 😈
+  }
+
+  function resetPrank() {
+    progress = 0;
+    bar.style.width = '0%';
+    btn.style.display = 'none';
+    fakeLoading();
+  }
+
+  fakeLoading();
+</script></body>
+</html>
